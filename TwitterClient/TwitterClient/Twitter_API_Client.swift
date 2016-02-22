@@ -28,8 +28,29 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
     }
     
     
+    func retweet(id_string:String, success:()->(), failure:()->()){
+        let parameters:[String:String] = ["id":id_string]
+        POST("1.1/statuses/retweet/\(id_string).json", parameters: nil, progress: nil, success: { (operation:NSURLSessionDataTask, response:AnyObject?) -> Void in
+            
+            
+            let dictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: dictionary)
+            //print(tweet.text)
+            
+            
+            
+            
+            }) { (operation:NSURLSessionDataTask?, error:NSError) -> Void in
+                //if the tweets are protected
+                print(error.localizedDescription)
+                
+        }
+    }
+    
     
     func currentAccount(success:(User)->(), failure:(NSError) -> ()){
+        
+        
         GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
             let user = User(dictionary: response as! NSDictionary)
             success(user)

@@ -9,6 +9,8 @@
 import UIKit
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+   
+    
     var tweets: [Tweet]!
     
     override func viewDidLoad() {
@@ -19,13 +21,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-        Twitter_API_Client.sharedInstance.homeTimeline({ (tweets:[Tweet]) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            
-            }) { (error:NSError) -> () in
-                //
-        }
+        reloadHomeTimeline()
         definesPresentationContext = true
         
         // Do any additional setup after loading the view.
@@ -55,7 +51,28 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func onLogoutButton(sender: AnyObject) {
         Twitter_API_Client.sharedInstance.logout()  
     }
-    
+    @IBAction func retweetPressed(sender: AnyObject) {
+        let button = sender as! UIButton
+        let view = button.superview!
+        let cell = view.superview as! TweetCell
+        
+        Twitter_API_Client.sharedInstance.retweet(cell.tweet.id!, success: { () -> () in
+            //
+            self.reloadHomeTimeline()
+            }) { () -> () in
+                //
+        }
+        
+    }
+    func reloadHomeTimeline(){
+        Twitter_API_Client.sharedInstance.homeTimeline({ (tweets:[Tweet]) -> () in
+            self.tweets = tweets
+            self.tableView.reloadData()
+            
+            }) { (error:NSError) -> () in
+                //
+        }
+    }
 
     
     
