@@ -11,7 +11,7 @@ import UIKit
 class User: NSObject {
     var name: String?
     var screenName: String?
-    var profileUrl: NSURL?
+    var profileImageUrl: NSURL?
     var tagline: String?
     var dictionary: NSDictionary
     static var currUserDataKey = "currentUserData"
@@ -24,7 +24,7 @@ class User: NSObject {
         screenName = dictionary["screen_name"] as? String
         let profileUrlString = dictionary["profile_image_url_https"] as? String
         if let profileUrlString = profileUrlString{
-            profileUrl = NSURL(string: profileUrlString)
+            profileImageUrl = NSURL(string: profileUrlString)
         }
         tagline = dictionary["description"] as? String
     }

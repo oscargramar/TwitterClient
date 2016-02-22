@@ -9,6 +9,26 @@
 import UIKit
 
 class TweetCell: UITableViewCell {
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var screenNameLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var textTweetLabel: UILabel!
+    
+    
+    
+    
+    var tweet: Tweet!{
+        didSet{
+            
+            self.profileImageView.setImageWithURL((tweet.user?.profileImageUrl)!)
+            self.nameLabel.text = tweet.user?.name
+            self.screenNameLabel.text = "@\((tweet.user?.screenName)!)"
+            self.textTweetLabel.text = tweet.text
+            self.textTweetLabel.sizeToFit()
+        }
+    }
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
