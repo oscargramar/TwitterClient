@@ -84,6 +84,12 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="320" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHz-ef-YSY">
+                                                    <rect key="frame" x="253" y="102" width="24" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxt-ax-wfW">
                                                     <rect key="frame" x="184" y="12" width="104" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -117,9 +123,9 @@
                                                     </constraints>
                                                     <state key="normal" image="reply-action_0.png"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="320" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHz-ef-YSY">
-                                                    <rect key="frame" x="253" y="102" width="24" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="RETWEETED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pV-EL-nwR">
+                                                    <rect key="frame" x="81" y="0.0" width="67" height="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -156,6 +162,8 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="ilb-s2-YTc" id="H5j-HL-Ij7"/>
                                             <outlet property="profileImageView" destination="EeV-1J-2tq" id="eqZ-GE-8SZ"/>
+                                            <outlet property="retweetButton" destination="89d-VU-3gN" id="zQQ-JE-KWo"/>
+                                            <outlet property="retweetedLabel" destination="2pV-EL-nwR" id="qhX-O9-0nW"/>
                                             <outlet property="screenNameLabel" destination="lxt-ax-wfW" id="jWD-KH-o6w"/>
                                             <outlet property="textTweetLabel" destination="Crw-Pk-BRg" id="fWf-li-30U"/>
                                             <outlet property="timestampLabel" destination="ckN-xW-ww2" id="gnN-lF-jYB"/>
@@ -173,7 +181,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cVw-bg-wNj">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="hit-B8-GcY">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="hit-B8-GcY">
                             <connections>
                                 <action selector="onLogoutButton:" destination="6EO-5c-2vk" id="SaQ-Mf-G56"/>
                             </connections>

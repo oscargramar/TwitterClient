@@ -17,12 +17,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        navigationItem.title = "Home"
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
         reloadHomeTimeline()
         definesPresentationContext = true
+        
+        
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -56,13 +61,15 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let view = button.superview!
         let cell = view.superview as! TweetCell
         
+        
         Twitter_API_Client.sharedInstance.retweet(cell.tweet.id!, success: { () -> () in
             //
             self.reloadHomeTimeline()
-            }) { () -> () in
+            }) { (error:NSError) -> () in
                 //
+                
+                print(error.localizedDescription)
         }
-        
     }
     func reloadHomeTimeline(){
         Twitter_API_Client.sharedInstance.homeTimeline({ (tweets:[Tweet]) -> () in

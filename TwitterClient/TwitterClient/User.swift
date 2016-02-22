@@ -17,6 +17,9 @@ class User: NSObject {
     static var currUserDataKey = "currentUserData"
     static let userLoggedOutNotification = "UserDidLogout"
     static var _currUser:User?
+    var protected = false
+
+    
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -27,6 +30,8 @@ class User: NSObject {
             profileImageUrl = NSURL(string: profileUrlString)
         }
         tagline = dictionary["description"] as? String
+        protected = (dictionary["protected"] as? Bool)!
+        
     }
     
     class var currentUser:User?{
