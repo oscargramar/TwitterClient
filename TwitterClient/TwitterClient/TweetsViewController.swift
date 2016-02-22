@@ -16,21 +16,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         
-        
-        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
         
         Twitter_API_Client.sharedInstance.homeTimeline({ (tweets:[Tweet]) -> () in
             self.tweets = tweets
-//            for tweet in self.tweets{
-//                print(tweet.text)
-//           }
             self.tableView.reloadData()
             
             }) { (error:NSError) -> () in
                 //
         }
-        
-        
+        definesPresentationContext = true
         
         // Do any additional setup after loading the view.
     }
@@ -39,7 +35,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         //
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as! TweetCell
         cell.tweet = tweets[indexPath.row]
-        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     

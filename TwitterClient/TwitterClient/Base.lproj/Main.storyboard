@@ -48,7 +48,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yt5-0T-QXp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yt5-0T-QXp">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -72,12 +72,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="I have seen the future and it is this: www.future.com la la lalala la" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crw-Pk-BRg">
-                                                    <rect key="frame" x="81" y="35" width="215" height="31.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="4h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckN-xW-ww2">
                                                     <rect key="frame" x="296" y="12" width="13" height="13"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -94,20 +88,27 @@
                                                     <rect key="frame" x="86" y="95" width="34" height="30"/>
                                                     <state key="normal" title="reply"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDZ-84-LHY">
-                                                    <rect key="frame" x="199" y="95" width="52" height="30"/>
-                                                    <state key="normal" title="favorite"/>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89d-VU-3gN">
                                                     <rect key="frame" x="134" y="95" width="52" height="30"/>
                                                     <state key="normal" title="retweet"/>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDZ-84-LHY">
+                                                    <rect key="frame" x="199" y="95" width="52" height="30"/>
+                                                    <state key="normal" title="favorite"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="I have seen the future and it is this: www.future.com la la lalala la" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crw-Pk-BRg">
+                                                    <rect key="frame" x="81" y="35" width="215" height="31.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="lxt-ax-wfW" firstAttribute="leading" secondItem="ilb-s2-YTc" secondAttribute="trailing" constant="8" id="3de-ql-NeT"/>
                                                 <constraint firstItem="ckN-xW-ww2" firstAttribute="baseline" secondItem="lxt-ax-wfW" secondAttribute="baseline" id="Att-eO-qyD"/>
                                                 <constraint firstItem="Crw-Pk-BRg" firstAttribute="top" secondItem="ilb-s2-YTc" secondAttribute="bottom" constant="8" id="Ecn-Xo-Sb3"/>
                                                 <constraint firstItem="ckN-xW-ww2" firstAttribute="top" secondItem="2jb-2C-dtl" secondAttribute="top" constant="12" id="GKx-od-cWh"/>
+                                                <constraint firstAttribute="trailing" secondItem="CDZ-84-LHY" secondAttribute="trailing" constant="69" id="NJp-2e-xJi"/>
                                                 <constraint firstItem="ilb-s2-YTc" firstAttribute="leading" secondItem="EeV-1J-2tq" secondAttribute="trailing" constant="8" id="NmA-1H-4WN"/>
                                                 <constraint firstAttribute="trailing" secondItem="ckN-xW-ww2" secondAttribute="trailing" constant="11" id="Nou-7n-yJL"/>
                                                 <constraint firstItem="Agj-I6-Wjg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Crw-Pk-BRg" secondAttribute="bottom" constant="5" id="PII-YU-oWT"/>
@@ -140,6 +141,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DY3-HB-JaM" firstAttribute="top" secondItem="Yt5-0T-QXp" secondAttribute="bottom" id="CjZ-eX-6jO"/>
+                            <constraint firstAttribute="trailing" secondItem="Yt5-0T-QXp" secondAttribute="trailing" id="MK0-dk-vgd"/>
+                            <constraint firstItem="Yt5-0T-QXp" firstAttribute="top" secondItem="176-Xv-bJJ" secondAttribute="top" id="Q7k-r2-koI"/>
+                            <constraint firstItem="Yt5-0T-QXp" firstAttribute="leading" secondItem="176-Xv-bJJ" secondAttribute="leading" id="v2t-dC-kgG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cVw-bg-wNj">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="hit-B8-GcY">

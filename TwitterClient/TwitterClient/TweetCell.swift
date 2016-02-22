@@ -16,8 +16,6 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var textTweetLabel: UILabel!
     
     
-    
-    
     var tweet: Tweet!{
         didSet{
             
@@ -32,12 +30,17 @@ class TweetCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        profileImageView.layer.cornerRadius = 3
+        profileImageView.clipsToBounds = true
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
     }
-
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width 
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
