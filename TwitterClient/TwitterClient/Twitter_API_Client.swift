@@ -37,6 +37,14 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
                 failure(error)
         })
     }
+    func favorite(id_string:String, success:()->(), failure:(NSError)->()){
+        POST("1.1/favorites/create.json?id=\(id_string)", parameters: nil, success: { (operation:NSURLSessionDataTask?, response:AnyObject?) -> Void in
+            //
+            success()
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        })
+    }
     
     
     func currentAccount(success:(User)->(), failure:(NSError) -> ()){

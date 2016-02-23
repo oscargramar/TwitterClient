@@ -16,12 +16,14 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var textTweetLabel: UILabel!
     @IBOutlet weak var retweetedLabel: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoritesCountLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     
     var tweet: Tweet!{
         didSet{
             
-            
+            self.favoritesCountLabel.text = "\(tweet.favoritesCount)"
             self.retweetedLabel.hidden = !tweet.retweeted
             
             self.profileImageView.setImageWithURL((tweet.user?.profileImageUrl)!)
@@ -29,6 +31,8 @@ class TweetCell: UITableViewCell {
             self.screenNameLabel.text = "@\((tweet.user?.screenName)!)"
             self.textTweetLabel.text = tweet.text
             self.textTweetLabel.sizeToFit()
+            
+            
             if(tweet.retweeted == false && (tweet.user?.protected)! == false){
                 self.retweetButton.imageView!.image = UIImage(named: "retweet-action.png")
             }
@@ -39,6 +43,15 @@ class TweetCell: UITableViewCell {
             if(tweet.retweeted == true){
                 self.retweetButton.imageView!.image = UIImage(named: "retweet-action-on-pressed.png")
             }
+            
+            if(tweet.favorited == true){
+                self.favoriteButton.imageView!.image = UIImage(named: "like-action-on-pressed.png")
+            }
+            else{
+                self.favoriteButton.imageView!.image = UIImage(named: "like-action.png")
+            }
+            
+            
         }
     }
     
@@ -47,8 +60,6 @@ class TweetCell: UITableViewCell {
         super.awakeFromNib()
         profileImageView.layer.cornerRadius = 3
         profileImageView.clipsToBounds = true
-        //nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
-   
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -63,6 +74,14 @@ class TweetCell: UITableViewCell {
         if(tweet.retweeted == true){
             self.retweetButton.imageView!.image = UIImage(named: "retweet-action-on-pressed.png")
         }
+        if(tweet.favorited == true){
+            self.favoriteButton.imageView!.image = UIImage(named: "like-action-on-pressed.png")
+        }
+        else{
+            self.favoriteButton.imageView!.image = UIImage(named: "like-action.png")
+        }
+        
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

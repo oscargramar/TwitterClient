@@ -18,6 +18,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         navigationItem.title = "Home"
+        navigationController?.navigationBar.barTintColor = UIColor(red: 64/255.0, green: 153/255.0, blue: 1, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
@@ -70,6 +72,24 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 print(error.localizedDescription)
         }
+    }
+    @IBAction func favoritePressed(sender: AnyObject) {
+        let button = sender as! UIButton
+        let view = button.superview!
+        let cell = view.superview as! TweetCell
+        
+        Twitter_API_Client.sharedInstance.favorite(cell.tweet.id!, success: { () -> () in
+            //
+            self.reloadHomeTimeline()
+            }) { (error:NSError) -> () in
+                //
+                
+                print(error.localizedDescription)
+        }
+
+        
+        
+        
     }
     func reloadHomeTimeline(){
         Twitter_API_Client.sharedInstance.homeTimeline({ (tweets:[Tweet]) -> () in

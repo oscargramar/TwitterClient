@@ -96,7 +96,7 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89d-VU-3gN">
+                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89d-VU-3gN">
                                                     <rect key="frame" x="145" y="95" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Zwl-22-bzh"/>
@@ -114,6 +114,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="xop-em-pMf"/>
                                                     </constraints>
                                                     <state key="normal" image="like-action.png"/>
+                                                    <connections>
+                                                        <action selector="favoritePressed:" destination="6EO-5c-2vk" eventType="touchUpInside" id="4Wl-bj-pr2"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agj-I6-Wjg">
                                                     <rect key="frame" x="68" y="95" width="30" height="30"/>
@@ -160,6 +163,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="CDZ-84-LHY" id="HWg-QM-Gv6"/>
+                                            <outlet property="favoritesCountLabel" destination="XHz-ef-YSY" id="AxR-ej-Esf"/>
                                             <outlet property="nameLabel" destination="ilb-s2-YTc" id="H5j-HL-Ij7"/>
                                             <outlet property="profileImageView" destination="EeV-1J-2tq" id="eqZ-GE-8SZ"/>
                                             <outlet property="retweetButton" destination="89d-VU-3gN" id="zQQ-JE-KWo"/>
