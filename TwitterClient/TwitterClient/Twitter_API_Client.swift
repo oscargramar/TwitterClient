@@ -17,7 +17,9 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
     
     
     func homeTimeline(success: ([Tweet]) -> (), failure: (NSError) -> ()){
-        GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
+
+        
+        GET("1.1/statuses/home_timeline.json", parameters: nil, progress: nil,  success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
             let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
             print("success")
             success(tweets)
@@ -30,7 +32,7 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
     
     func retweet(id_string:String, success:(replyTweet:Tweet)->(), failure: (NSError)->()){
         
-        POST("1.1/statuses/retweet/\(id_string).json", parameters: nil, success: { (operation:NSURLSessionDataTask?, response: AnyObject?) -> Void in
+        POST("1.1/statuses/retweet/\(id_string).json", parameters: nil, progress: nil, success: { (operation:NSURLSessionDataTask?, response: AnyObject?) -> Void in
             let dictionary = response as! NSDictionary
             let tweet = Tweet(dictionary: dictionary)
             success(replyTweet: tweet)
@@ -39,7 +41,7 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
         })
     }
     func favorite(id_string:String, success:(replyTweet:Tweet)->(), failure:(NSError)->()){
-        POST("1.1/favorites/create.json?id=\(id_string)", parameters: nil, success: { (operation:NSURLSessionDataTask?, response:AnyObject?) -> Void in
+        POST("1.1/favorites/create.json?id=\(id_string)", parameters: nil, progress: nil, success: { (operation:NSURLSessionDataTask?, response:AnyObject?) -> Void in
             let dictionary = response as! NSDictionary
             let tweet = Tweet(dictionary: dictionary)
             success(replyTweet: tweet)
@@ -50,7 +52,7 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
     
     
     func currentAccount(success:(User)->(), failure:(NSError) -> ()){
-        GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
+        GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
             let user = User(dictionary: response as! NSDictionary)
             success(user)
         }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
