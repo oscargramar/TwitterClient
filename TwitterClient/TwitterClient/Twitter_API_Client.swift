@@ -50,8 +50,6 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
     
     
     func currentAccount(success:(User)->(), failure:(NSError) -> ()){
-        
-        
         GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
             let user = User(dictionary: response as! NSDictionary)
             success(user)
@@ -67,6 +65,8 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
             Twitter_API_Client.sharedInstance.requestSerializer.saveAccessToken(accessToken)
             self.currentAccount({ (user:User) -> () in
                 User.currentUser = user
+                
+                
                 self.loginSuccess?()
                 }, failure: { (error: NSError) -> () in
                     self.loginFailure?(error)

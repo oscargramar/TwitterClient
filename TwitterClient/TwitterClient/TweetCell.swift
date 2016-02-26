@@ -23,7 +23,7 @@ class TweetCell: UITableViewCell {
     
     var tweet: Tweet!{
         didSet{
-            print("tweetdidSet")
+            
             self.favoritesCountLabel.text = "\(tweet.favoritesCount)"
             self.retweetCountLabel.text = "\(tweet.retweetCount)"
             if(tweet.retweetCount == 0){
@@ -39,20 +39,33 @@ class TweetCell: UITableViewCell {
             self.textTweetLabel.text = tweet.text
             self.textTweetLabel.sizeToFit()
             
-            
-            //If it's not a retweet or a protected tweet
-            if(tweet.retweeted == false && (tweet.user?.protected)! == false){
-                self.retweetButton.imageView!.image = UIImage(named: "retweet-action.png")
+            //print("Tweet user id \(tweet.user?.userID) ")
+            //print("Curr user id \(User._currUser?.userID) ")
+
+            //if it's my own tweet, I will disable the retweet button
+            if(tweet.user?.userID! != User._currUser?.userID!){
+                //If it's not a retweet or a protected tweet
+                if(tweet.retweeted == false && (tweet.user?.protected)! == false){
+                    self.retweetButton.imageView!.image = UIImage(named: "retweet-action.png")
+                    self.userInteractionEnabled = true
+                    print("\(tweet.text) not a retweet and not a protected")
+                }
+                //if it's not a protected tweet  and not retweeted
+                if((tweet.user?.protected) == true && tweet.retweeted == false){
+                    self.retweetButton.imageView!.image = UIImage(named: "retweet-action-inactive.png")
+                    self.userInteractionEnabled = false
+                }
+                //if it's retweeted
+                if(tweet.retweeted == true){
+                    self.retweetButton.imageView!.image = UIImage(named: "retweet-action-on-pressed.png")
+                    self.userInteractionEnabled = true
+                }
             }
-            
-            //if it's not a tweet  and not retweeted
-            if((tweet.user?.protected) == true && tweet.retweeted == false){
+                
+            else{
+                print("my own user")
                 self.retweetButton.imageView!.image = UIImage(named: "retweet-action-inactive.png")
-            }
-            
-            //if it's retweeted
-            if(tweet.retweeted == true){
-                self.retweetButton.imageView!.image = UIImage(named: "retweet-action-on-pressed.png")
+                self.retweetButton.userInteractionEnabled = false
             }
             
             //if it's favorited
@@ -63,8 +76,6 @@ class TweetCell: UITableViewCell {
             else{
                 self.favoriteButton.imageView!.image = UIImage(named: "like-action.png")
             }
-            
-            
         }
     }
     
@@ -73,32 +84,46 @@ class TweetCell: UITableViewCell {
         super.awakeFromNib()
         profileImageView.layer.cornerRadius = 3
         profileImageView.clipsToBounds = true
-        print("awake from jib")
+        //print("awake from jib")
     }
     override func layoutSubviews() {
         super.layoutSubviews()
         //nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
-        if(tweet.retweeted == false && (tweet.user?.protected)! == false){
-            self.retweetButton.imageView!.image = UIImage(named: "retweet-action.png")
+        //if it's my own tweet, I will disable the retweet button
+        if(tweet.user?.userID! != User._currUser?.userID!){
+            //If it's not a retweet or a protected tweet
+            if(tweet.retweeted == false && (tweet.user?.protected)! == false){
+                self.retweetButton.imageView!.image = UIImage(named: "retweet-action.png")
+                self.userInteractionEnabled = true
+                print("\(tweet.text) not a retweet and not a protected")
+            }
+            //if it's not a protected tweet  and not retweeted
+            if((tweet.user?.protected) == true && tweet.retweeted == false){
+                self.retweetButton.imageView!.image = UIImage(named: "retweet-action-inactive.png")
+                self.userInteractionEnabled = false
+            }
+            //if it's retweeted
+            if(tweet.retweeted == true){
+                self.retweetButton.imageView!.image = UIImage(named: "retweet-action-on-pressed.png")
+                self.userInteractionEnabled = true
+            }
+        }
+            
+        else{
+            print("my own user")
+            self.retweetButton.imageView!.image = UIImage(named: "retweet-action-inactive.png")
+            self.retweetButton.userInteractionEnabled = false
         }
         
-        if((tweet.user?.protected) == true && tweet.retweeted == false){
-            self.retweetButton.imageView!.image = UIImage(named: "retweet-action-inactive.png")
-        }
-        if(tweet.retweeted == true){
-            self.retweetButton.imageView!.image = UIImage(named: "retweet-action-on-pressed.png")
-        }
+        //if it's favorited
         if(tweet.favorited == true){
             self.favoriteButton.imageView!.image = UIImage(named: "like-action-on-pressed.png")
         }
+            //if it's a regular tweet
         else{
             self.favoriteButton.imageView!.image = UIImage(named: "like-action.png")
         }
-        
-//        if(isFavorited){
-//            self.favoritesCountLabel.text = "\(self.tweet.favoritesCount + 1)"
-//            self.favoriteButton.imageView!.image = UIImage(named: "like-action-on-pressed.png")
-//        }
+
         
         
     }
@@ -128,7 +153,7 @@ class TweetCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
-        print("set selected")
+        //print("set selected")
     }
 
 }

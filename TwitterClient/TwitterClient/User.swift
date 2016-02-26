@@ -14,6 +14,7 @@ class User: NSObject {
     var profileImageUrl: NSURL?
     var tagline: String?
     var dictionary: NSDictionary
+    var userID: String?
     static var currUserDataKey = "currentUserData"
     static let userLoggedOutNotification = "UserDidLogout"
     static var _currUser:User?
@@ -31,6 +32,7 @@ class User: NSObject {
         }
         tagline = dictionary["description"] as? String
         protected = (dictionary["protected"] as? Bool)!
+        userID = dictionary["id_str"] as? String
         
     }
     
@@ -51,6 +53,8 @@ class User: NSObject {
         set(user){
             let defaults = NSUserDefaults.standardUserDefaults()
             _currUser = user
+            print("Curr user set: ")
+            print(_currUser?.name)
             if let user = user{
                 let data = try!NSJSONSerialization.dataWithJSONObject(user.dictionary, options: [])
                 defaults.setObject(data, forKey: currUserDataKey)
