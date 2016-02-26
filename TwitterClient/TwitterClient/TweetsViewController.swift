@@ -64,9 +64,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = view.superview as! TweetCell
         
         
-        Twitter_API_Client.sharedInstance.retweet(cell.tweet.id!, success: { () -> () in
-            //
-            self.reloadHomeTimeline()
+        Twitter_API_Client.sharedInstance.retweet(cell.tweet.id!, success: { (replyTweet: Tweet) -> () in
+            cell.setRetweeted()
+            
+            
+
+            
             }) { (error:NSError) -> () in
                 //
                 
@@ -78,11 +81,11 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let view = button.superview!
         let cell = view.superview as! TweetCell
         
-        Twitter_API_Client.sharedInstance.favorite(cell.tweet.id!, success: { () -> () in
-            //
-            self.reloadHomeTimeline()
+        Twitter_API_Client.sharedInstance.favorite(cell.tweet.id!, success: { (replyTweet: Tweet) -> () in
+            cell.setFavorited()
+            
             }) { (error:NSError) -> () in
-                //
+                
                 
                 print(error.localizedDescription)
         }

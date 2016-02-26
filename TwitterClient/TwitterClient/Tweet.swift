@@ -18,6 +18,7 @@ class Tweet: NSObject {
     var dictionary:NSDictionary?
     var retweeted = false
     var favorited = false
+    var inReplyToScreename: String?
     
     init(dictionary:NSDictionary) {
         
@@ -36,8 +37,7 @@ class Tweet: NSObject {
         id = dictionary["id_str"] as? String
         retweeted = (dictionary["retweeted"] as? Bool)!
         favorited = (dictionary["favorited"] as? Bool)!
-        
-        
+        inReplyToScreename = dictionary["in_reply_to_screen_name"] as? String
     }
     class func tweetsWithArray (dictionaries:[NSDictionary]) ->[Tweet]{
         var tweets = [Tweet]()

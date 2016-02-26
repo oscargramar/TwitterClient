@@ -28,19 +28,21 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
     }
     
     
-    func retweet(id_string:String, success:()->(), failure: (NSError)->()){
+    func retweet(id_string:String, success:(replyTweet:Tweet)->(), failure: (NSError)->()){
         
-        POST("1.1/statuses/retweet/\(id_string).json", parameters: nil, success: { (operation:NSURLSessionDataTask?, response:AnyObject?) -> Void in
-            //
-            success()
+        POST("1.1/statuses/retweet/\(id_string).json", parameters: nil, success: { (operation:NSURLSessionDataTask?, response: AnyObject?) -> Void in
+            let dictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: dictionary)
+            success(replyTweet: tweet)
             }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                 failure(error)
         })
     }
-    func favorite(id_string:String, success:()->(), failure:(NSError)->()){
+    func favorite(id_string:String, success:(replyTweet:Tweet)->(), failure:(NSError)->()){
         POST("1.1/favorites/create.json?id=\(id_string)", parameters: nil, success: { (operation:NSURLSessionDataTask?, response:AnyObject?) -> Void in
-            //
-            success()
+            let dictionary = response as! NSDictionary
+            let tweet = Tweet(dictionary: dictionary)
+            success(replyTweet: tweet)
             }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                 failure(error)
         })
