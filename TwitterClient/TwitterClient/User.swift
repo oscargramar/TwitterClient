@@ -53,8 +53,6 @@ class User: NSObject {
         set(user){
             let defaults = NSUserDefaults.standardUserDefaults()
             _currUser = user
-            print("Curr user set: ")
-            print(_currUser?.name)
             if let user = user{
                 let data = try!NSJSONSerialization.dataWithJSONObject(user.dictionary, options: [])
                 defaults.setObject(data, forKey: currUserDataKey)

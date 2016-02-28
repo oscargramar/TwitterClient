@@ -230,12 +230,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qjg-Ih-EPG">
-                                        <rect key="frame" x="183" y="11" width="104" height="13.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vDd-Dc-U3M">
                                         <rect key="frame" x="8" y="8" width="65" height="65"/>
                                         <constraints>
@@ -256,6 +250,9 @@
                                             <constraint firstAttribute="height" constant="30" id="Tnl-Ed-9fJ"/>
                                         </constraints>
                                         <state key="normal" image="reply-action_0.png"/>
+                                        <connections>
+                                            <action selector="replyPressed:" destination="whl-XH-Fnf" eventType="touchUpInside" id="9FA-pw-csb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQQ-5e-X4Y">
                                         <rect key="frame" x="147" y="192" width="30" height="30"/>
@@ -292,6 +289,7 @@
                                         </constraints>
                                         <state key="normal" image="like-action.png"/>
                                         <connections>
+                                            <action selector="favoritePressed:" destination="whl-XH-Fnf" eventType="touchUpInside" id="BPM-Zc-6JH"/>
                                             <action selector="favoritePressed:" destination="6EO-5c-2vk" eventType="touchUpInside" id="r87-qu-fOh"/>
                                         </connections>
                                     </button>
@@ -325,11 +323,17 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="@TheMichaelMoran" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qjg-Ih-EPG">
+                                        <rect key="frame" x="183" y="13" width="104" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="n9N-Ov-EyH" firstAttribute="leading" secondItem="W82-wh-YZw" secondAttribute="trailing" constant="8" id="16g-do-vIb"/>
-                                    <constraint firstItem="Qjg-Ih-EPG" firstAttribute="top" secondItem="hrp-dF-3uf" secondAttribute="top" constant="11" id="3gx-Z8-JJ5"/>
+                                    <constraint firstItem="Qjg-Ih-EPG" firstAttribute="top" secondItem="hrp-dF-3uf" secondAttribute="top" constant="13" id="3gx-Z8-JJ5"/>
                                     <constraint firstItem="n9N-Ov-EyH" firstAttribute="top" secondItem="2LI-A9-no0" secondAttribute="bottom" constant="16.5" id="69h-7n-DU4"/>
                                     <constraint firstItem="2LI-A9-no0" firstAttribute="leading" secondItem="hrp-dF-3uf" secondAttribute="leading" constant="12" id="7vv-Qs-vHL"/>
                                     <constraint firstItem="vDd-Dc-U3M" firstAttribute="leading" secondItem="hrp-dF-3uf" secondAttribute="leading" constant="8" id="9x9-tI-uqm"/>
@@ -337,6 +341,7 @@
                                     <constraint firstItem="XDx-gL-Sn2" firstAttribute="leading" secondItem="iQQ-5e-X4Y" secondAttribute="trailing" constant="79" id="ICB-l1-UJt"/>
                                     <constraint firstItem="HcA-Ki-3jb" firstAttribute="leading" secondItem="P4D-xq-jki" secondAttribute="trailing" constant="8" id="KAt-Nv-CeM"/>
                                     <constraint firstItem="P4D-xq-jki" firstAttribute="top" secondItem="2LI-A9-no0" secondAttribute="bottom" constant="17" id="L2U-BM-v4j"/>
+                                    <constraint firstItem="USE-My-pri" firstAttribute="leading" secondItem="hrp-dF-3uf" secondAttribute="leading" constant="34" id="LOl-UH-b6f"/>
                                     <constraint firstItem="5eW-IH-59O" firstAttribute="top" secondItem="n9N-Ov-EyH" secondAttribute="bottom" constant="21.5" id="MTN-ad-DE4"/>
                                     <constraint firstItem="HcA-Ki-3jb" firstAttribute="top" secondItem="2LI-A9-no0" secondAttribute="bottom" constant="17" id="NWU-81-d5r"/>
                                     <constraint firstItem="2LI-A9-no0" firstAttribute="top" secondItem="SRU-Iq-1JR" secondAttribute="bottom" constant="8.5" id="NrM-yq-bTW"/>
@@ -347,6 +352,7 @@
                                     <constraint firstItem="5eW-IH-59O" firstAttribute="top" secondItem="P4D-xq-jki" secondAttribute="bottom" constant="21.5" id="VaB-38-vlk"/>
                                     <constraint firstAttribute="height" constant="242.5" id="WVe-d8-MsN"/>
                                     <constraint firstItem="5eW-IH-59O" firstAttribute="top" secondItem="HcA-Ki-3jb" secondAttribute="bottom" constant="22" id="Wlx-2Y-La1"/>
+                                    <constraint firstAttribute="trailing" secondItem="2LI-A9-no0" secondAttribute="trailing" constant="8" id="XMv-uQ-8ws"/>
                                     <constraint firstItem="W82-wh-YZw" firstAttribute="leading" secondItem="hrp-dF-3uf" secondAttribute="leading" constant="25" id="Yvb-er-AUx"/>
                                     <constraint firstItem="bpq-6g-pWj" firstAttribute="leading" secondItem="vDd-Dc-U3M" secondAttribute="trailing" constant="7" id="ZCK-FB-c88"/>
                                     <constraint firstItem="Jzf-jc-ubV" firstAttribute="leading" secondItem="hrp-dF-3uf" secondAttribute="leading" constant="12" id="ZlZ-4R-2qL"/>
@@ -358,7 +364,6 @@
                                     <constraint firstItem="Jzf-jc-ubV" firstAttribute="top" secondItem="USE-My-pri" secondAttribute="bottom" constant="8" id="h0a-Ql-q8Q"/>
                                     <constraint firstItem="XDx-gL-Sn2" firstAttribute="top" secondItem="5eW-IH-59O" secondAttribute="bottom" constant="8.5" id="j3z-Jg-Ne6"/>
                                     <constraint firstAttribute="trailing" secondItem="Jzf-jc-ubV" secondAttribute="trailing" constant="8" id="k5p-v0-AML"/>
-                                    <constraint firstAttribute="trailing" secondItem="XDx-gL-Sn2" secondAttribute="trailing" constant="34" id="kHn-M5-Ld8"/>
                                     <constraint firstItem="bpq-6g-pWj" firstAttribute="top" secondItem="hrp-dF-3uf" secondAttribute="top" constant="11" id="l1c-XB-5MP"/>
                                     <constraint firstItem="iQQ-5e-X4Y" firstAttribute="leading" secondItem="USE-My-pri" secondAttribute="trailing" constant="83" id="nE8-JT-ZD7"/>
                                     <constraint firstItem="SRU-Iq-1JR" firstAttribute="leading" secondItem="hrp-dF-3uf" secondAttribute="leading" constant="12" id="p2D-80-tl9"/>
@@ -384,13 +389,15 @@
                         <outlet property="replyButton" destination="USE-My-pri" id="pUG-gi-2hh"/>
                         <outlet property="retweetButton" destination="iQQ-5e-X4Y" id="PKB-PO-C8Q"/>
                         <outlet property="retweetCountLabel" destination="W82-wh-YZw" id="a3U-J6-DMb"/>
+                        <outlet property="retweetPressed" destination="iQQ-5e-X4Y" id="Sma-fX-VU8"/>
                         <outlet property="textLabel" destination="G8n-aJ-VG7" id="4Xe-RW-hqS"/>
+                        <outlet property="timestampLabel" destination="SRU-Iq-1JR" id="7we-TM-A5u"/>
                         <outlet property="usernameLabel" destination="Qjg-Ih-EPG" id="dbM-uQ-oPA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJT-0H-rPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1619" y="273"/>
+            <point key="canvasLocation" x="1665" y="295"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cFb-7j-W6g">

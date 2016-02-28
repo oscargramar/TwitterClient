@@ -87,7 +87,7 @@ class TweetCell: UITableViewCell {
             if(tweet.retweeted == false && (tweet.user?.protected)! == false){
                 self.retweetButton.imageView!.image = UIImage(named: "retweet-action.png")
                 self.userInteractionEnabled = true
-                print("\(tweet.text) not a retweet and not a protected")
+               
             }
             //if it's not a protected tweet  and not retweeted
             if((tweet.user?.protected) == true && tweet.retweeted == false){
@@ -102,7 +102,6 @@ class TweetCell: UITableViewCell {
         }
             
         else{
-            print("my own user")
             self.retweetButton.imageView!.image = UIImage(named: "retweet-action-inactive.png")
             self.retweetButton.userInteractionEnabled = false
         }
