@@ -33,6 +33,13 @@ class TweetCell: UITableViewCell {
                 self.retweetCountLabel.hidden = false
             }
             
+            if(tweet.favoritesCount == 0){
+                self.favoritesCountLabel.hidden = true
+            }
+            else{
+                self.favoritesCountLabel.hidden = false
+            }
+            
             self.profileImageView.setImageWithURL((tweet.user?.profileImageUrl)!)
             self.nameLabel.text = tweet.user?.name
             self.screenNameLabel.text = "@\((tweet.user?.screenName)!)"
@@ -49,7 +56,6 @@ class TweetCell: UITableViewCell {
         super.awakeFromNib()
         profileImageView.layer.cornerRadius = 3
         profileImageView.clipsToBounds = true
-        //print("awake from jib")
     }
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -59,7 +65,6 @@ class TweetCell: UITableViewCell {
     func setRetweeted(){
         self.tweet.retweeted = true
         self.tweet.retweetCount += 1
-        print(self.tweet.retweetCount)
         if(tweet.retweetCount > 0){
             self.retweetCountLabel.hidden = false
         }
@@ -69,8 +74,11 @@ class TweetCell: UITableViewCell {
         
     }
     func setFavorited(){
-            self.tweet.favorited = true
-            self.tweet.favoritesCount += 1
+        self.tweet.favorited = true
+        self.tweet.favoritesCount += 1
+        if(tweet.favoritesCount > 0){
+            self.favoritesCountLabel.hidden = false
+        }
             self.favoritesCountLabel.text = "\(self.tweet.favoritesCount)"
             self.favoriteButton.imageView!.image = UIImage(named: "like-action-on-pressed.png")
     }
@@ -86,18 +94,18 @@ class TweetCell: UITableViewCell {
             //If it's not a retweet or a protected tweet
             if(tweet.retweeted == false && (tweet.user?.protected)! == false){
                 self.retweetButton.imageView!.image = UIImage(named: "retweet-action.png")
-                self.userInteractionEnabled = true
+                self.retweetButton.userInteractionEnabled = true
                
             }
             //if it's not a protected tweet  and not retweeted
             if((tweet.user?.protected) == true && tweet.retweeted == false){
                 self.retweetButton.imageView!.image = UIImage(named: "retweet-action-inactive.png")
-                self.userInteractionEnabled = false
+                self.retweetButton.userInteractionEnabled = false
             }
             //if it's retweeted
             if(tweet.retweeted == true){
                 self.retweetButton.imageView!.image = UIImage(named: "retweet-action-on-pressed.png")
-                self.userInteractionEnabled = true
+                self.retweetButton.userInteractionEnabled = true
             }
         }
             
@@ -109,10 +117,12 @@ class TweetCell: UITableViewCell {
         //if it's favorited
         if(tweet.favorited == true){
             self.favoriteButton.imageView!.image = UIImage(named: "like-action-on-pressed.png")
+            self.favoriteButton.userInteractionEnabled = true
         }
             //if it's a regular tweet
         else{
             self.favoriteButton.imageView!.image = UIImage(named: "like-action.png")
+            self.favoriteButton.userInteractionEnabled = true
         }
 
     }
