@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]!
     
@@ -37,6 +37,18 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         //
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell") as! TweetCell
         cell.tweet = tweets[indexPath.row]
+        
+        
+        let profileImageTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleProfileTapped:"))
+        profileImageTapRecognizer.cancelsTouchesInView = true
+        cell.profileImageView?.tag = indexPath.row
+        profileImageTapRecognizer.numberOfTapsRequired = 1
+        profileImageTapRecognizer.delegate = self
+        cell.profileImageView?.userInteractionEnabled = true
+        cell.profileImageView?.addGestureRecognizer(profileImageTapRecognizer)
+        
+        
+        
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
@@ -104,12 +116,29 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     
+    func handleProfileTapped(tapRecognizer: UITapGestureRecognizer){
+        self.performSegueWithIdentifier("profileSegue", sender:tapRecognizer)
+        
+        
+        
+        
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cell = sender as! TweetCell
-        let detailsVC = segue.destinationViewController as! TweetDetailViewController
-        detailsVC.tweet = cell.tweet
+        if let cell = sender as? TweetCell{
+            let detailsVC = segue.destinationViewController as! TweetDetailViewController
+            detailsVC.tweet = cell.tweet
+        }
+        else if let profileTap = sender as? UITapGestureRecognizer{
+            let profilePageVC = segue.destinationViewController as! ProfilePageViewController
+            if let cell =  profileTap.view?.superview?.superview as? TweetCell{
+                profilePageVC.tweet = cell.tweet
+
+            }
+        }
+        
+        
         
         
         

@@ -36,6 +36,25 @@
             </objects>
             <point key="canvasLocation" x="149.33333333333334" y="295.83333333333331"/>
         </scene>
+        <!--Profile Page View Controller-->
+        <scene sceneID="tNc-76-iDk">
+            <objects>
+                <viewController id="3cM-1W-sHI" customClass="ProfilePageViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7XN-ax-JZp"/>
+                        <viewControllerLayoutGuide type="bottom" id="2wd-Yt-25i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z0m-5J-lpJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9Jm-W6-VgQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aJC-S9-gKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="-376"/>
+        </scene>
         <!--Tweets View Controller-->
         <scene sceneID="GQ6-9Q-MdA">
             <objects>
@@ -61,6 +80,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EeV-1J-2tq">
                                                     <rect key="frame" x="8" y="11" width="65" height="65"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="Q9w-7x-aa1"/>
                                                         <constraint firstAttribute="height" constant="65" id="gzf-Ec-3IL"/>
@@ -197,11 +217,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Yt5-0T-QXp" id="ypK-0i-KVO"/>
+                        <segue destination="3cM-1W-sHI" kind="push" identifier="profileSegue" id="oxm-bq-lt6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbu-Cj-Bbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1176" y="295"/>
+            <point key="canvasLocation" x="1165" y="324"/>
         </scene>
         <!--Tweet Detail View Controller-->
         <scene sceneID="VmA-8k-B8o">

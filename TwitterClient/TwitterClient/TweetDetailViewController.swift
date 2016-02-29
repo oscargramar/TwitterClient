@@ -72,7 +72,6 @@ class TweetDetailViewController: UIViewController {
             }
             //if it's retweeted
             if(tweet!.retweeted == true){
-                print("Retweeted")
                 retweetButton.imageView!.image = UIImage(named: "retweet-action-on-pressed.png")
                 retweetButton.userInteractionEnabled = true
             }
@@ -85,7 +84,6 @@ class TweetDetailViewController: UIViewController {
         
         //if it's favorited
         if(tweet!.favorited == true){
-            print("favorited")
             favoriteButton.imageView!.image = UIImage(named: "like-action-on-pressed.png")
         }
             //if it's a regular tweet
