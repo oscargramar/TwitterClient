@@ -118,11 +118,12 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
     }
     
     func postStatus(status:String, success:()->(), failure:(NSError)->()){
-        print(status)
-        POST("1.1/statuses/update.json?status=\(status)", parameters: nil, progress: nil, success: { (operation:NSURLSessionDataTask?, response:AnyObject?) -> Void in
+        let parameters = ["status": status]
+        POST("1.1/statuses/update.json", parameters: parameters, progress: nil, success: { (operation:NSURLSessionDataTask?, response:AnyObject?) -> Void in
             success()
             }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                 failure(error)
+                print(error.localizedDescription)
         })
 
     }

@@ -23,7 +23,6 @@ class PostTweetViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func cancelPressed(sender: AnyObject) {
-        print("cancel")
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func tweetPressed(sender: AnyObject) {

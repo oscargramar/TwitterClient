@@ -93,7 +93,7 @@ class ProfilePageViewController: UIViewController,UITableViewDelegate, UITableVi
         self.numFollowingLabel.text = "\((user?.numFollowing)!)"
         self.numFollowersLabel.text = "\((user?.numFollowers)!)"
         self.nameLabel.text = user?.name
-        self.screenameLabel.text = "@\(user?.screenName)"
+        self.screenameLabel.text = "@\((user?.screenName)!)"
         
         self.numFollowersLabel.sizeToFit()
         self.numFollowingLabel.sizeToFit()
