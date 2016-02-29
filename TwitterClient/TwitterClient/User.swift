@@ -19,7 +19,12 @@ class User: NSObject {
     static let userLoggedOutNotification = "UserDidLogout"
     static var _currUser:User?
     var protected = false
-
+    
+    var statusesCount = 0
+    var numTweets = 0
+    var numFollowing = 0
+    var numFollowers = 0
+    var backgroundImageUrl: NSURL?
     
     
     init(dictionary: NSDictionary) {
@@ -32,10 +37,21 @@ class User: NSObject {
         }
         tagline = dictionary["description"] as? String
         protected = (dictionary["protected"] as? Bool)!
-        userID = dictionary["id_str"] as? String
+        userID = dictionary["id_str"] as? String        
+        
+        let imgurl = dictionary["profile_background_image_url"] as? String
+        if let imgurl = imgurl{
+            backgroundImageUrl = NSURL(string: imgurl)
+        }
+        numTweets = dictionary["statuses_count"] as? Int ?? 0
+        numFollowing = dictionary["friends_count"] as? Int ?? 0
+        numFollowers = dictionary["followers_count"] as? Int ?? 0
+        
+        
+        
+        
         
     }
-    
     class var currentUser:User?{
         get{
             if _currUser == nil {

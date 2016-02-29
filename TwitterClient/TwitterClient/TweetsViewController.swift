@@ -118,10 +118,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func handleProfileTapped(tapRecognizer: UITapGestureRecognizer){
         self.performSegueWithIdentifier("profileSegue", sender:tapRecognizer)
-        
-        
-        
-        
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -133,7 +129,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         else if let profileTap = sender as? UITapGestureRecognizer{
             let profilePageVC = segue.destinationViewController as! ProfilePageViewController
             if let cell =  profileTap.view?.superview?.superview as? TweetCell{
-                profilePageVC.tweet = cell.tweet
+                profilePageVC.user = cell.tweet.user
 
             }
         }

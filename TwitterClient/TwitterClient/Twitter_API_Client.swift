@@ -21,11 +21,31 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
         
         GET("1.1/statuses/home_timeline.json", parameters: nil, progress: nil,  success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
             let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
-            print("success")
             success(tweets)
         }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                 failure(error)
                 print(error.localizedDescription)
+        })
+    }
+    
+    func getUserTimeline(user_id:String,success:([Tweet])->(), failure:(NSError)->()){
+        GET("1.1/statuses/user_timeline.json?user_id=\(user_id)", parameters: nil, progress: nil,  success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
+            let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+            success(tweets)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+                print(error.localizedDescription)
+        })
+    }
+    
+    func showUser(user_id:String,success:(dictionary: NSDictionary)->(), failure:(NSError)->()){
+        GET("1.1/users/show.json?user_id=\(user_id)", parameters: nil, progress: nil,  success: { (operation: NSURLSessionDataTask?, response: AnyObject?) -> Void in
+            let profile = response as! NSDictionary
+            print("sucessful profile retrieval")
+            success(dictionary: profile)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print(error.localizedDescription)
+                failure(error)
         })
     }
     
@@ -96,9 +116,28 @@ class Twitter_API_Client:BDBOAuth1SessionManager{
                 self.loginFailure?(error)
         }
     }
+    
+    func postStatus(status:String, success:()->(), failure:(NSError)->()){
+        print(status)
+        POST("1.1/statuses/update.json?status=\(status)", parameters: nil, progress: nil, success: { (operation:NSURLSessionDataTask?, response:AnyObject?) -> Void in
+            success()
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        })
+
+    }
+    
+    
+    
+    
+    
     func logout(){
         User.currentUser = nil
         deauthorize()
         NSNotificationCenter.defaultCenter().postNotificationName(User.userLoggedOutNotification, object: nil)
     }
+    
+    
+    
+    
 }
